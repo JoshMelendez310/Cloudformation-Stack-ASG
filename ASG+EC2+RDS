@@ -1,0 +1,118 @@
+AWSTemplateFormatVersion: 2010-09-09
+Metadata:
+  'AWS::CloudFormation::Designer':
+    1ef74930-a4b9-4ea4-9fae-f45d8bcf04f1:
+      size:
+        width: 60
+        height: 60
+      position:
+        x: 240
+        'y': 90
+      z: 0
+      embeds: []
+    69217073-d2ad-4bb5-9584-e99e890fad65:
+      size:
+        width: 60
+        height: 60
+      position:
+        x: 370
+        'y': 20
+      z: 0
+      embeds: []
+      dependson:
+        - 1ef74930-a4b9-4ea4-9fae-f45d8bcf04f1
+    765fb3a3-887e-4e73-b8ff-1e2e57265c2e:
+      size:
+        width: 60
+        height: 60
+      position:
+        x: 350
+        'y': 130
+      z: 0
+      embeds: []
+      dependson:
+        - 1ef74930-a4b9-4ea4-9fae-f45d8bcf04f1
+    6681a459-e31e-4abc-92ac-c440b283ad32:
+      size:
+        width: 60
+        height: 60
+      position:
+        x: 150
+        'y': 20
+      z: 0
+      embeds: []
+      dependson:
+        - 1ef74930-a4b9-4ea4-9fae-f45d8bcf04f1
+    6facdd32-e96d-49e8-94ac-1c8558357ff6:
+      source:
+        id: 765fb3a3-887e-4e73-b8ff-1e2e57265c2e
+      target:
+        id: 1ef74930-a4b9-4ea4-9fae-f45d8bcf04f1
+      z: 1
+    4c2de4b3-8f87-4fe2-9526-76f1c17b4e6a:
+      source:
+        id: 6681a459-e31e-4abc-92ac-c440b283ad32
+      target:
+        id: 1ef74930-a4b9-4ea4-9fae-f45d8bcf04f1
+      z: 2
+    dee16f3c-1399-42ad-b5d3-600411292aa6:
+      source:
+        id: 69217073-d2ad-4bb5-9584-e99e890fad65
+      target:
+        id: 1ef74930-a4b9-4ea4-9fae-f45d8bcf04f1
+      z: 3
+    13cbbb5b-880e-45de-8cd4-9769bcbfeea8:
+      size:
+        width: 60
+        height: 60
+      position:
+        x: 469.22294392591317
+        'y': 125.71251443560604
+      z: 0
+      dependson:
+        - 765fb3a3-887e-4e73-b8ff-1e2e57265c2e
+    e27eb5c0-b9a9-4898-aef5-d0c38e4bc789:
+      source:
+        id: 13cbbb5b-880e-45de-8cd4-9769bcbfeea8
+      target:
+        id: 765fb3a3-887e-4e73-b8ff-1e2e57265c2e
+      z: 4
+Resources:
+  AASST1NJX5:
+    Type: 'AWS::ApplicationAutoScaling::ScalableTarget'
+    Properties: {}
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: 1ef74930-a4b9-4ea4-9fae-f45d8bcf04f1
+  AASSP2RZ2A:
+    Type: 'AWS::ApplicationAutoScaling::ScalingPolicy'
+    Properties: {}
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: 69217073-d2ad-4bb5-9584-e99e890fad65
+    DependsOn:
+      - AASST1NJX5
+  EC2I3RWW4:
+    Type: 'AWS::EC2::Instance'
+    Properties: {}
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: 765fb3a3-887e-4e73-b8ff-1e2e57265c2e
+    DependsOn:
+      - AASST1NJX5
+  ELBLB4HPU7:
+    Type: 'AWS::ElasticLoadBalancing::LoadBalancer'
+    Properties: {}
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: 6681a459-e31e-4abc-92ac-c440b283ad32
+    DependsOn:
+      - AASST1NJX5
+  RDSDBI34H81:
+    Type: 'AWS::RDS::DBInstance'
+    Properties: {}
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: 13cbbb5b-880e-45de-8cd4-9769bcbfeea8
+    DependsOn:
+      - EC2I3RWW4
